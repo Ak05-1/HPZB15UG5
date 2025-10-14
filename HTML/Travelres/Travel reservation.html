@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <title>Travel Reservation</title>
+    <link rel="stylesheet" type="text/css" href="Travel reservation.css">
+    <head>
+        <div id="head">
+            <h1>Travel Reservation Form</h1>
+            <h3>Denotes mandotory</h3>
+        </div>
+    </head>
+    <body>
+        <div id="allbody">
+            <p>Name: </p>
+            <input type="text" name="Name" placeholder="Firstname Lastname" autofocus="autofocus" value="">
+            <p>Email: </p>
+            <input type="email" name="email" placeholder="Email" autofocus="autofocus" value="">
+            <p>select room tier</p>
+            <select name="tier">
+                <option value="premium">Premium</option>
+                <option value="2">2nd class</option>
+                <option value="3">3rd class</option>
+            </select>
+            <p>How long would you like to stay with us (in days)</p>
+            <input type="number" name="staytime" placeholder="Length of stay" autofocus="autofocus" min="1" max="21" step="1" value="">
+            <p>When do you plan on arriving?</p>
+            <input type="date" name="arrivaldt" placeholder="mm/dd/yyyy" autofocus="autofocus" value="">
+            <p>How many guests (including yourself)</p>
+            <input type="number" name="gstcnt" placeholder="Number of guests" autofocus="autofocus" min="1" max="6" step="1" value="">
+            <p>extra perks: </p>
+            <div class="perks">
+                <div id="3ma">
+                    3 meal all you can eat <input type="checkbox" name="threem" value="3mealallyoucaneat">
+                </div>
+                <div id="fja">
+                    free jakuzzi access <input type="checkbox" name="freej" value="freejakuzziaccess">
+                </div>
+                <div id="foea">
+                    access to fiber optic ethernet <input type="checkbox" name="fibopt" value="fiberopticaccess">
+                </div>
+            </div>
+            <p>discount coupon</p>
+            <p class="specialdiscount">enter ABCD1234 for elder or student 50% discount</p>
+            <p class="specialdiscount">discount only applied for the room cost and not other factors</p>
+            <input type="text" name="coupon" placeholder="eg.: AAAA1111" autofocus="autofocus" value="">
+            <p>terms and conditions</p>
+            <input type="radio" name="tnc" value="agree"> agree
+            <input type="radio" name="tnc" value="disagree"> disagree
+            <div id="complete">
+                <input type="button" name="complete" value="complete" placeholder="Complete Reservation">
+            </div>
+        </div>
+    <script src="../Travelres/Travelres.js"></script>
+    </body>
+</html>
