@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    background-color: rgb(212, 212, 212);
+}
+head {
+    margin: 0;
+}
+#head {
+    width: 100%;
+    padding: 20px;
+    background-color: rgb(37, 37, 37);
+}
+h1 {
+    color: rgb(212, 212, 212);
+}
+h2 {
+    color: rgb(212, 212, 212);    
+}
+h3 {
+    color: rgb(212, 212, 212);
+}
+p {
+    color: rgb(37, 37, 37);
+}
+.specialdiscount {
+    font-size: 10px;
+}
+#allbody {
+    padding: 10px;
+}
+#complete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
