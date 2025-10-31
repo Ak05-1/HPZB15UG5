@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rotating Circles</title>
+<link rel="stylesheet" href="RC.css">
+<style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #202020;
+  font-family: Roboto, sans-serif;
+  color: #454545;
+}
+
+#note {
+  text-align: center;
+  width: 400px;
+  margin-top: 10px;
+}
+
+#box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #262626;
+  width: 400px;
+  height: 400px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+#box canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<div id="box">
+  <canvas id="animation" width="400" height="400"></canvas>
+  <div id="note">Made by Akos</div>
+</div>
+
+<script>
+window.requestAnimFrame = (function(){
+  return window.requestAnimationFrame    ||
+         window.webkitRequestAnimationFrame ||
+         window.mozRequestAnimationFrame    ||
+         function(callback){ window.setTimeout(callback, 1000/60); };
+})();
+
+function rad(deg) {
+  return deg * (Math.PI / 180);
+}
+
+function pointOnCircle(x, y, radius, point) {
+  return {
+    x: x + radius * Math.cos(rad(point)),
+    y: y + radius * Math.sin(rad(point))
+  };
+}
+
+Math.Tau = Math.PI * 2;
+
+const DOT_RADIUS = 4;
+
+function DottedRotatingRing(ctx, x, y, radius, dots, color, speed) {
+  this.x = x;
+  this.y = y;
+  this.radius = radius;
+  this.style = color;
+  this.speed = speed;
+  this.offset = 0;
+  this.ctx = ctx;
+  this.dots = dots;
+}
+
+DottedRotatingRing.prototype.step = function() {
+  this.offset = (this.offset + this.speed) % 360;
+};
+
+DottedRotatingRing.prototype.render = function() {
+  this.ctx.fillStyle = this.style;
+  let step = 360 / this.dots;
+  for (let i = 0; i < this.dots; i++) {
+    let p = pointOnCircle(this.x, this.y, this.radius, this.offset + i*step);
+    this.ctx.beginPath();
+    this.ctx.arc(p.x, p.y, DOT_RADIUS, 0, Math.Tau, false);
+    this.ctx.fill();
+  }
+};
+
+window.addEventListener('load', function() {
+  const canvas = document.getElementById('animation');
+  const ctx = canvas.getContext('2d');
+
+  const colors = ['#1674bc', '#00a496', '#82c640', '#f6b62e', '#ee5b35', '#eb225f', '#c22286', '#612e8d'];
+  const cbDots = [4, 8, 12, 16, 20, 24, 28, 32];
+  const initialRadius = 15;
+  const spacingRadius = 15;
+  const initialSpeed  = 5;
+  const speedStep     = 0.5;
+
+  let rings = [];
+  let radius = initialRadius;
+  let speed  = initialSpeed;
+  for (let i = 0; i < cbDots.length; i++) {
+    rings.push(new DottedRotatingRing(ctx, 200, 200, radius, cbDots[i], colors[i], speed));
+    radius += spacingRadius;
+    speed -= speedStep;
+  }
+
+  function animate() {
+    requestAnimFrame(animate);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    rings.forEach(r => r.step());
+    rings.forEach(r => r.render());
+  }
+
+  animate();
+});
+</script>
+
+</body>
+</html>
