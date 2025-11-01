@@ -7,7 +7,7 @@
     <body>
         <div id="head">
             <div class="logcontainer">
-                <img class="logocontainer" src="../Travelres/Untitled70_20251031193116.png">
+                <img class="logocontainer" src="./Untitled70_20251031193116.png">
             </div>
             <div id="header">
                 <h1>Travel Reservation Form</h1>
@@ -17,7 +17,7 @@
         </div>
         <div id="allbody">
             <p>Name: </p>
-            <input type="text" name="Name" placeholder="Firstname Lastname" autofocus="autofocus" value="">
+            <input type="text" name="name" placeholder="Firstname Lastname" autofocus="autofocus" value="">
             <p>Email: </p>
             <input type="email" name="email" placeholder="Email" autofocus="autofocus" value="">
             <p>select room tier</p>
@@ -35,26 +35,26 @@
             <p>extra perks: </p>
             <div class="perks">
                 <div id="3ma">
-                    3 meal all you can eat <input type="checkbox" name="threem" value="3mealallyoucaneat">
+                    3 meal all you can eat <input type="checkbox" name="perks" value="threem">
                 </div>
                 <div id="fja">
-                    free jakuzzi access <input type="checkbox" name="freej" value="freejakuzziaccess">
+                    free jakuzzi access <input type="checkbox" name="perks" value="freej">
                 </div>
                 <div id="foea">
-                    access to fiber optic ethernet <input type="checkbox" name="fibopt" value="fiberopticaccess">
+                    access to fiber optic ethernet <input type="checkbox" name="perks" value="fibopt">
                 </div>
             </div>
             <p>discount coupon</p>
             <p class="specialdiscount">enter ABCD1234 for elder or student 50% discount</p>
             <p class="specialdiscount">discount only applied for the room cost and not other factors</p>
             <input type="text" name="coupon" placeholder="eg.: AAAA1111" autofocus="autofocus" value="">
-            <p>terms and conditions</p>
+            <p><a href="../T&Cs/terms.html">Terms and Conditions</a></p>
             <input type="radio" name="tnc" value="agree"> agree
             <input type="radio" name="tnc" value="disagree"> disagree
             <div id="complete">
                 <input type="button" name="complete" value="complete" placeholder="Complete Reservation">
             </div>
         </div>
-    <script src="../Travelres/Travelres.js"></script>
+    <script src="./Backend/Travelres.js"></script>
     </body>
 </html>

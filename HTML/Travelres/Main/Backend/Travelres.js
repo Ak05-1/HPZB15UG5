@@ -55,6 +55,25 @@ function applyDiscount(amount, discountRate) {
     return amount * (1 - discountRate);
 }
 
+/* ---------------------- T&C verification ---------------------- */
+function checkTaC() {
+    const TaC = document.querySelector('[name="tnc"]:checked');
+    
+    if (!TaC) {
+        alert("You shall not pass without agreeing to our T&Cs");
+        return false;
+    }
+
+    if (TaC.value === "disagree") {
+        alert("You shall not pass without agreeing to our T&Cs");
+        return false;
+    }
+
+    // If "agree" is selected
+    return true;
+}
+
+
 /* ---------------------- Logging Function ---------------------- */
 function logReservation(configs, finalTotal) {
     const logEntry = `
@@ -75,6 +94,7 @@ Total Cost: $${finalTotal.toFixed(2)}
 /* ---------------------- Main Reservation Handler ---------------------- */
 function handleReservation(configs) {
     if (!verifyName()) return; // stop if name invalid
+    if (!checkTaC()) return; // stop if user doesnt agree
 
     const roomCost = calculateCost(configs.tier, configs.staytime);
     const { totalCost: perksCost, discountableCost: discountablePerksCost } = calculatePerksCost(configs.perks);
