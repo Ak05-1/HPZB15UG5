@@ -1,3 +1,3 @@
 setTimeout(function() {
-    window.location.href = "../Windows XP/Desktop/Desktop.html";
+    window.location.href = "../Desktop/Desktop.html";
   }, 8000);

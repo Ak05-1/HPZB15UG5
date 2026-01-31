@@ -5,5 +5,5 @@ window.setTimeout(function() {
   loaderEl.style.display = 'block';
 }, 3000);
 setTimeout(function() {
-    window.location.href = "../HTML.html";
+    window.location.href = "../SysPost/HTML.html";
   }, 8000);
